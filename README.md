@@ -1,0 +1,2 @@
+# fdu_network_auto_auth
+复旦大学校园网络自动登录验证脚本
