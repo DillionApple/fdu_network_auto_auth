@@ -1,6 +1,7 @@
 import time
 import datetime
 import random
+import threading
 
 import requests
 
@@ -18,17 +19,19 @@ payload = {
 
 random.seed(time.time())
 
-while True:
+def start_making_request():
 
-    response = requests.post(url, data=payload)
+    while True:
+        response = requests.post(url, data=payload)
+        datetime_now = datetime.datetime.now()
 
-    datetime_now = datetime.datetime.now()
-
-    print("{time}: {response}".format(time=datetime_now, response=response.content.decode('utf-8')))
+        print("{time}: {response}".format(time=datetime_now, response=response.content.decode('utf-8')))
         
-    # sleep from 10 mins to 60 mins
-    sleep_seconds = random.randrange(600, 3600)
-    interval = datetime.timedelta(seconds=sleep_seconds)    
-    print("Next request will at {time} in {seconds} seconds".format(time=datetime_now+interval, seconds=sleep_seconds))
+        # sleep from 10 mins to 60 mins
+        sleep_seconds = random.randrange(600, 3600)
+        interval = datetime.timedelta(seconds=sleep_seconds)    
+        print("Next request will at {time} in {seconds} seconds".format(time=datetime_now+interval, seconds=sleep_seconds))
 
-    time.sleep(sleep_seconds)
+        time.sleep(sleep_seconds)
+    
+threading.Thread(target=start_making_request).start()
