@@ -5,6 +5,8 @@ if __name__ == '__main__':
     try:
         username = sys.argv[1]
         password = sys.argv[2]
+        username = username.encode("utf8")
+        password = password.encode("utf8")
         print("b64username={0}".format(base64.b64encode(username)))
         print("b64password={0}".format(base64.b64encode(password)))
     except Exception as e:

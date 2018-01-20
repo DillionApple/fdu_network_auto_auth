@@ -1,2 +1,2 @@
-username = "<your identity code>"
-password = "<your password>"
+b64username = "<your identity code's base64 code>"
+b64password = "<your password's base64 code>"

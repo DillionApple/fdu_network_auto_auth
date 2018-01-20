@@ -45,9 +45,9 @@ def do_logout():
     response = requests.post(url, data=payload)
 
 def test_network():
-    retry_times = 5
+    retry_times = 3
     for i in range(retry_times):
-        ret_code = os.system("ping www.baidu.com -c 1 -t 1")
+        ret_code = os.system("ping www.baidu.com -c 1 -W 1")
         if ret_code == 0:
             log("Ping success")
             return True
