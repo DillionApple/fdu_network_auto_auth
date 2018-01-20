@@ -2,6 +2,8 @@ import time
 import datetime
 import random
 import threading
+import base64
+import os
 
 import requests
 
@@ -14,11 +16,13 @@ random.seed(time.time())
 def do_login():
 
     print("Do Login")
+    # print('username: ' + base64.b64decode(b64username))
+    # print('password: ' + base64.b64decode(b64password))
 
     payload = {
         'action': 'login',
-        'username': username,
-        'password': password,
+        'username': base64.b64decode(b64username),
+        'password': base64.b64decode(b64password),
         'ac_id': 1,
         'ajax': 1 }
     
@@ -40,24 +44,32 @@ def do_logout():
     
     response = requests.post(url, data=payload)
 
+def test_network():
+    retry_times = 5
+    for i in range(retry_times):
+        ret_code = os.system("ping www.baidu.com -c 1 -t 1")
+        if ret_code == 0:
+            log("Ping success")
+            return True
+    log("Ping failed after {0} times".format(retry_times))
+    return False
+
+def log(msg):
+    print("{time}: {msg}".format(time=datetime.datetime.now(), msg=msg))
+
 def start_making_request():
 
     while True:
-        datetime_now = datetime.datetime.now()
-        if do_login():
-            print("{time}: Login Success".format(time=datetime_now))
-        else:
+        if (not test_network()):
+            log("Network connection is bad, try to relogin")
             do_logout()
             if do_login():
-                print("{time}: Login Success".format(time=datetime_now))
-            else:                
-                print("{time}: Login Fail".format(time=datetime_now))
+                log("Login success")
+            else:
+                log("Login fail")
         
-        # sleep from 10 mins to 60 mins
-        sleep_seconds = random.randrange(600, 3600)
-        interval = datetime.timedelta(seconds=sleep_seconds)    
-        print("Next request will at {time} in {seconds} seconds".format(time=datetime_now+interval, seconds=sleep_seconds))
-
+        # sleep 1 minute
+        sleep_seconds = 60
         time.sleep(sleep_seconds)
 
 if __name__ == '__main__':
