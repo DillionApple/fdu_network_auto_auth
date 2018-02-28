@@ -2,8 +2,6 @@
 
 cp -r . /etc/fnaa
 
-cp ./fnaa /etc/init.d/
-
 cp ./fnaa.service /etc/systemd/system
 
 systemctl daemon-reload

@@ -2,8 +2,6 @@
 
 rm -r /etc/fnaa
 
-rm /etc/init.d/fnaa
-
 rm /etc/systemd/system/fnaa.service
 
 echo "Success"

@@ -9,32 +9,34 @@ This script is used to sign in to fudan network automaticlly
 pip3 install requests
 ```
 
-1. Run `install` script
+1. Generate base64 code of your username and password. (base64 is not secure, it only avoids trusted people from knowing your password accidently)
+
+```bash
+python3 b64generator.py
+```
+
+2. Write the base64 code to `account_config.py`
+
+3. Run `install` script
 
 ```bash
 cd <path to project folder>
 sudo ./install
 ```
 
-3. Generate base64 code of your username and password
+After that, the service should be running and will run automatically after rebooting
 
-```bash
-python3 b64generator.py
-```
-
-4. Write the base64 code to `account_config.py`
-
-   After that, the script will auto run after booting.
-
-5. Start the service
+4. Service controls
 
 ```bash
 sudo service fnaa start
 sudo service fnaa status
+sudo service fnaa stop
 ```
 
-6. Stop the service
+5. Uninstall
 
 ```bash
-sudo service fnaa stop
+cd <path to project folder>
+sudo ./uninstall
 ```
