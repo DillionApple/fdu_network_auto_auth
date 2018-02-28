@@ -9,3 +9,5 @@ cp ./fnaa.service /etc/systemd/system
 systemctl daemon-reload
 
 systemctl enable fnaa.service
+
+echo "Success"

@@ -1,14 +1,11 @@
 [Unit]
-Description=fnaa service
+Description=fdu network auto authentification service
 
 [Service]
-Type=simple
-ExecStart=/usr/bin/python3 /etc/fnaa/fdu_network_auto_auth.py
+ExecStart=/bin/bash -c "/usr/bin/python3 /etc/fnaa/fdu_network_auto_auth.py"
 WorkingDirectory=/etc/fnaa/
-Environment=API_KEY=123456789
-Environment=API_PASS=password
 Restart=always
 RestartSec=2
 
 [Install]
-WantedBy=sysinit.target
+WantedBy=multi-user.target

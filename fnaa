@@ -1,5 +1,14 @@
 #!/bin/bash
 
+### BEGIN INIT INFO
+# Provides:          fnaa
+# Required-Start:    $all
+# Required-Stop:
+# Default-Start:     2 3 4 5
+# Default-Stop:
+# Short-Description: fdu network auto auth
+### END INIT INFO
+
 SERVICE_NAME="fnaa"
 SCRIPT_PATH="/etc/fnaa/fdu_network_auto_auth.py"
 PYTHON="python"
