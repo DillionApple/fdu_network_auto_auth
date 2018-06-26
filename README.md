@@ -15,9 +15,9 @@ pip3 install requests
 python3 b64generator.py
 ```
 
-2. Write the base64 code to `account_config.py`
+Then you will get a config file called account_config.py
 
-3. Run `install` script
+2. Run `install` script
 
 ```bash
 cd <path to project folder>
@@ -26,7 +26,7 @@ sudo ./install
 
 After that, the service should be running and will run automatically after rebooting
 
-4. Service controls
+3. Service controls
 
 ```bash
 sudo service fnaa start
@@ -34,7 +34,7 @@ sudo service fnaa status
 sudo service fnaa stop
 ```
 
-5. Uninstall
+4. Uninstall
 
 ```bash
 cd <path to project folder>
