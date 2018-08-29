@@ -1,6 +1,11 @@
 # fdu_network_auto_auth
 This script is used to sign in to fudan network automaticlly
 
+## Requirement
+
+It only works for Linux with python3 and pip3 installed.
+You should be an sudoer of the machine.
+
 ## Usage
 
 0. Install required package
@@ -9,24 +14,18 @@ This script is used to sign in to fudan network automaticlly
 pip3 install requests
 ```
 
-1. Generate base64 code of your username and password. (base64 is not secure, it only avoids trusted people from knowing your password accidently)
-
-```bash
-python3 b64generator.py
-```
-
-Then you will get a config file called account_config.py
-
-2. Run `install` script
+1. Run `install` script
 
 ```bash
 cd <path to project folder>
 sudo ./install
 ```
 
-After that, the service should be running and will run automatically after rebooting
+This script may ask for your student id and password.
+After that, the service should be installed. Run `sudo service fnaa start` to start the service.
+The service will automatically start after rebooting.
 
-3. Service controls
+2. Service controls
 
 ```bash
 sudo service fnaa start
@@ -34,7 +33,7 @@ sudo service fnaa status
 sudo service fnaa stop
 ```
 
-4. Uninstall
+3. Uninstall
 
 ```bash
 cd <path to project folder>

@@ -1,5 +1,10 @@
 #!/bin/bash
 
+read -p "Student ID:" student_id
+read -p "Password:" password
+
+python3 ./b64generator.py $student_id $password
+
 cp -r . /etc/fnaa
 
 cp ./fnaa.service /etc/systemd/system
