@@ -24,7 +24,12 @@ def do_login():
         'username': base64.b64decode(b64username),
         'password': base64.b64decode(b64password),
         'ac_id': 1,
-        'ajax': 1 }
+        'user_ip': 202.120.224.53,
+        'nas_ip': '',
+        'user_mac': '',
+        'save_me': 0,
+        'ajax': 1,
+    }
     
     response = requests.post(url, data=payload)
     response_str = response.content.decode('utf-8')
