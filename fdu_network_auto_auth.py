@@ -20,7 +20,7 @@ def do_login():
     # print('password: ' + base64.b64decode(b64password))
 
     get_user_ip_cmd = """
-    ifconfig | grep "inet" | grep "\d*\.\d*\.\d*\.\d*" | grep -v "127.0.0.1" |  awk '{ print $2 }'
+    ifconfig | grep "inet" | grep -e '[0-9]*\.[0-9]*\.[0-9]*\.[0-9]*' | grep -v 127.0.0.1 | awk '{ print $2 }'
     """
 
     user_ip = os.popen(get_user_ip_cmd).read().strip()
@@ -86,3 +86,4 @@ def start_making_request():
 
 if __name__ == '__main__':
     threading.Thread(target=start_making_request).start()
+
