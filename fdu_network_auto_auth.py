@@ -19,12 +19,19 @@ def do_login():
     # print('username: ' + base64.b64decode(b64username))
     # print('password: ' + base64.b64decode(b64password))
 
+    get_user_ip_cmd = """
+    ifconfig | grep "inet" | grep "\d*\.\d*\.\d*\.\d*" | grep -v "127.0.0.1" |  awk '{ print $2 }'
+    """
+
+    user_ip = os.popen(get_user_ip_cmd).read().strip()
+    print("Your IP address is {0}".format(user_ip))
+
     payload = {
         'action': 'login',
         'username': base64.b64decode(b64username),
         'password': base64.b64decode(b64password),
         'ac_id': 1,
-        'user_ip': 202.120.224.53,
+        'user_ip': user_ip,
         'nas_ip': '',
         'user_mac': '',
         'save_me': 0,
