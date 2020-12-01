@@ -13,6 +13,6 @@ systemctl daemon-reload
 
 systemctl enable fnaa.service
 
-service fnaa start
+service fnaa restart
 
 echo "Success"
