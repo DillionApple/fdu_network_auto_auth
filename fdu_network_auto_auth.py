@@ -20,7 +20,7 @@ def do_login():
     # print('password: ' + base64.b64decode(b64password))
 
     get_user_ip_cmd = """
-    ifconfig | grep "inet" | grep -e '[0-9]*\.[0-9]*\.[0-9]*\.[0-9]*' | grep -v 127.0.0.1 | awk '{ print $2 }'
+    ifconfig | grep "inet" | grep -e '[0-9]*\.[0-9]*\.[0-9]*\.[0-9]*' | grep 10\.[0-9]*\.[0-9]*\.[0-9]* | awk '{ print $2 }' | grep -o '[0-9]*\.[0-9]*\.[0-9]*\.[0-9]*'
     """
 
     user_ip = os.popen(get_user_ip_cmd).read().strip()
